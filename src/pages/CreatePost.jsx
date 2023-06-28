@@ -5,8 +5,8 @@ import Loading from "./Loading";
 
 const CreatePost = () => {
   const [createPost, responseData] = useCreatePostMutation();
-  const { isLoading, isSucess, isError } = responseData;
 
+  console.log("responseData", responseData);
   const [inputField, setInputField] = useState({
     title: "",
     body: "",
@@ -21,7 +21,7 @@ const CreatePost = () => {
         [name]: value,
       };
     });
-  };    
+  };
 
   const onSubmithandler = (e) => {
     e.preventDefault();
@@ -29,12 +29,12 @@ const CreatePost = () => {
     createPost(inputField);
   };
 
-  if (isLoading) return <Loading />;
-  if (isError) return <Error error={responseData?.error?.error} />;
+  //   if (isLoading) return <Loading />;
+  //   if (isError) return <Error error={responseData?.error?.error} />;
 
   return (
     <>
-      {isSucess && <p>Data Created Succesfully</p>}
+      {/* {isSucess && <p>Data Created Succesfully</p>} */}
       <form onSubmit={onSubmithandler}>
         <div
           style={{
